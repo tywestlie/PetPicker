@@ -1,0 +1,49 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/tmarq/turing/Mod4/PetPicker/app/models/connection.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/tmarq/turing/Mod4/PetPicker/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/tmarq/turing/Mod4/PetPicker/app/models/message.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/tmarq/turing/Mod4/PetPicker/app/models/pet.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/tmarq/turing/Mod4/PetPicker/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/tmarq/turing/Mod4/PetPicker/app/controllers/application_controller.rb": [
+        0,
+        0
+      ]
+    },
+    "timestamp": 1536445356
+  }
+}
