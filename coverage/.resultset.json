@@ -1,0 +1,20 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/tywest/turing/4module/PetPicker/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/tywest/turing/4module/PetPicker/app/models/user.rb": [
+        0,
+        0
+      ],
+      "/Users/tywest/turing/4module/PetPicker/app/controllers/application_controller.rb": [
+        0,
+        0
+      ]
+    },
+    "timestamp": 1536438607
+  }
+}
