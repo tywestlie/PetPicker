@@ -1,13 +1,20 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/pet.rb": [
+      "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/connection.rb": [
         1,
         1,
         null
       ],
       "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/application_record.rb": [
         1,
+        1,
+        null
+      ],
+      "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/pet.rb": [
+        1,
+        1,
+        null,
         1,
         null
       ],
@@ -21,6 +28,6 @@
         0
       ]
     },
-    "timestamp": 1536440407
+    "timestamp": 1536441105
   }
 }
