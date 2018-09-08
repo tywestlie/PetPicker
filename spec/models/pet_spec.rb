@@ -7,5 +7,6 @@ RSpec.describe Pet, type: :model do
 
   describe "relationships" do
     it {should belong_to(:user)}
+    it {should have_many(:connections)}
   end
 end
