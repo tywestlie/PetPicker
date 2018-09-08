@@ -1,20 +1,26 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/tywest/turing/4module/PetPicker/app/models/application_record.rb": [
-        0,
-        0,
-        0
+      "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/pet.rb": [
+        1,
+        1,
+        null
       ],
-      "/Users/tywest/turing/4module/PetPicker/app/models/user.rb": [
-        0,
-        0
+      "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/application_record.rb": [
+        1,
+        1,
+        null
       ],
-      "/Users/tywest/turing/4module/PetPicker/app/controllers/application_controller.rb": [
+      "/Users/stevenschwedt/turing/4mod/PetPicker/app/models/user.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/stevenschwedt/turing/4mod/PetPicker/app/controllers/application_controller.rb": [
         0,
         0
       ]
     },
-    "timestamp": 1536438607
+    "timestamp": 1536440407
   }
 }

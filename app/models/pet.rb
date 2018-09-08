@@ -1,3 +1,3 @@
-class User < ApplicationRecord
+class Pet < ApplicationRecord
   validates_presence_of :name
 end
