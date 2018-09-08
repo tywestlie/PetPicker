@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_210116) do
+ActiveRecord::Schema.define(version: 2018_09_08_211620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2018_09_08_210116) do
     t.integer "adopter_id"
     t.bigint "pet_id"
     t.index ["pet_id"], name: "index_connections_on_pet_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body"
+    t.integer "sender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "connection_id"
+    t.index ["connection_id"], name: "index_messages_on_connection_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -50,5 +59,6 @@ ActiveRecord::Schema.define(version: 2018_09_08_210116) do
   end
 
   add_foreign_key "connections", "pets"
+  add_foreign_key "messages", "connections"
   add_foreign_key "pets", "users"
 end
