@@ -21,16 +21,18 @@ ActiveRecord::Schema.define(version: 2018_09_08_211620) do
     t.datetime "updated_at", null: false
     t.integer "adopter_id"
     t.bigint "pet_id"
+    t.index ["adopter_id"], name: "index_connections_on_adopter_id"
     t.index ["pet_id"], name: "index_connections_on_pet_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "body"
-    t.integer "sender"
+    t.integer "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "connection_id"
     t.index ["connection_id"], name: "index_messages_on_connection_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "pets", force: :cascade do |t|

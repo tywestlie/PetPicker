@@ -4,7 +4,7 @@ class CreateConnections < ActiveRecord::Migration[5.2]
       t.integer :status
       t.timestamps
 
-      t.integer :adopter_id
+      t.integer :adopter_id, index: true
       t.references :pet, index: true, foreign_key: true
     end
   end
