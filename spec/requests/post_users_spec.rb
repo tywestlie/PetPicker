@@ -30,4 +30,14 @@ describe "post a user" do
     user = User.all.first
     expect(user.role).to eq("adopter")
   end
+
+  it 'adds a user in database with name and password' do
+
+    post "/api/v1/users", params: {user: {name: "banana", password: "1234"}}
+
+    body = JSON.parse(response.body)
+    # binding.pry
+    expect(body["key"]).to be_a(String)
+    expect(body["key"].length).to eq(22)
+  end
 end

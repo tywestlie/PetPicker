@@ -9,4 +9,9 @@ class User < ApplicationRecord
   enum role: [:default, :adopter, :owner, :admin]
   enum species_to_adopt: [:dog, :cat, :other]
 
+
+  def save_with_key
+    self.key = SecureRandom.urlsafe_base64
+    save
+  end
 end
