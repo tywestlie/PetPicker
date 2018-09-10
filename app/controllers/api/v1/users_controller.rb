@@ -6,6 +6,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :role, :lat, :lng, :search_radius)
+    params.require(:user).permit(:name, :password, :role, :species_to_adopt, :lat, :lng, :search_radius)
   end
 end

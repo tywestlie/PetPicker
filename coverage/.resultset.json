@@ -39,6 +39,9 @@
         1,
         1,
         null,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/stevenschwedt/turing/4mod/PetPicker/app/controllers/api/v1/users_controller.rb": [
@@ -59,6 +62,6 @@
         null
       ]
     },
-    "timestamp": 1536619873
+    "timestamp": 1536620118
   }
 }

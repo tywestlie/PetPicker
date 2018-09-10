@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :connections, class_name: 'Connection', foreign_key: 'adopter_id', dependent: :delete_all
   has_many :messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :delete_all
 
+  enum role: [:default, :adopter, :owner, :admin]
+  enum species_to_adopt: [:dog, :cat, :other]
+
 end
