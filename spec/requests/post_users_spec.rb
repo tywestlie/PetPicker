@@ -25,6 +25,9 @@ describe "post a user" do
     expect(user.search_radius).to eq(4)
   end
 
-  xit 'user cant become and admin' do
+  it 'user cant become and admin' do
+    post "/api/v1/users", params: {user: {name: "banana", password: "1234", role: "admin", species_to_adopt: "dog", lat: 30.5, lng: 33.44, search_radius: 4}}
+    user = User.all.first
+    expect(user.role).to eq("adopter")
   end
 end
