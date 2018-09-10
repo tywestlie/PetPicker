@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_211620) do
+ActiveRecord::Schema.define(version: 2018_09_10_222842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_09_08_211620) do
     t.datetime "updated_at", null: false
     t.integer "adopter_id"
     t.bigint "pet_id"
-    t.index ["adopter_id"], name: "index_connections_on_adopter_id"
     t.index ["pet_id"], name: "index_connections_on_pet_id"
   end
 
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 2018_09_08_211620) do
     t.string "fb_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "connections", "pets"
