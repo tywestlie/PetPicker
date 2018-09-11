@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :pet do
-    name Faker::VentureBros.unique.character
+    name {Faker::StarWars.unique.character}
     species { [0,1,2].sample }
     description "Poops a lot"
     pic "https://cdn2-www.dogtime.com/assets/uploads/2011/03/puppy-development-460x306.jpg"
