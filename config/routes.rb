@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       namespace :users do
         post '/:id/pets', to: 'pets#create'
+        get '/:id/pets', to: 'pets#index'
       end
     end
   end
