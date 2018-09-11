@@ -1,4 +1,5 @@
 class Api::V1::Users::PetsController < ApplicationController
+
   def create
     user = User.find(params["id"])
     pet = user.pets.create(pet_params)
