@@ -74,11 +74,6 @@
         1,
         1,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/tywest/turing/4module/PetPicker/app/controllers/application_controller.rb": [
@@ -106,6 +101,6 @@
         null
       ]
     },
-    "timestamp": 1536702799
+    "timestamp": 1536772319
   }
 }
