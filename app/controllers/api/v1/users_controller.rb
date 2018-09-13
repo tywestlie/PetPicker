@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
       user.role = "adopter"
     end
     user.save_with_key
-    render json: {"key": user.key}
+    render json: {"key": user.key, "id": user.id}
   end
 
   private
