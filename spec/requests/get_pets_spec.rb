@@ -16,7 +16,7 @@ describe 'get pets' do
     body = JSON.parse(response.body)
   end
 
-  it 'gets the right pets' do
+  it 'gets the 10 that user has not matched with pets' do
     user = create(:user)
     user2 = create(:user)
 
