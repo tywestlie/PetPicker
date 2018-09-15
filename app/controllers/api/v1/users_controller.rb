@@ -19,6 +19,18 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    if params["user"]["role"] == "owner"
+      user.role = "owner"
+    else
+      user.role = "adopter"
+    end
+    user.save
+    render json: user
+  end
+
   private
 
   def user_params
