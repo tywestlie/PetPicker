@@ -10,6 +10,15 @@ class Api::V1::UsersController < ApplicationController
     render json: {"key": user.key, "id": user.id, "name": user.name}
   end
 
+  def index
+    user = User.find_by_name(params[:name])
+    if user && user.authenticate(params[:password])
+      render json: user
+    else
+      render json: { "message": "login failed" }, status: 404
+    end
+  end
+
   private
 
   def user_params
