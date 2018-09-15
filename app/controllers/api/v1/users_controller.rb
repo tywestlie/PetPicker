@@ -31,6 +31,12 @@ class Api::V1::UsersController < ApplicationController
     render json: user
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    render json: {message: "#{user.name} has been removed"}
+  end
+
   private
 
   def user_params

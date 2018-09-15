@@ -2,5 +2,5 @@ class Pet < ApplicationRecord
   validates_presence_of :name
 
   belongs_to :user
-  has_many :connections
+  has_many :connections, dependent: :destroy
 end
