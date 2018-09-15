@@ -7,7 +7,16 @@ class Api::V1::UsersController < ApplicationController
       user.role = "adopter"
     end
     user.save_with_key
-    render json: {"key": user.key, "id": user.id}
+    render json: {"key": user.key, "id": user.id, "name": user.name}
+  end
+
+  def index
+    user = User.find_by_name(params[:name])
+    if user && user.authenticate(params[:password])
+      render json: user
+    else
+      render json: { "message": "login failed" }, status: 404
+    end
   end
 
   private
