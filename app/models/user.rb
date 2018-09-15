@@ -15,4 +15,19 @@ class User < ApplicationRecord
     self.key = SecureRandom.urlsafe_base64
     save
   end
+
+  def get_matches
+    if role == 'owner'
+      User.find_by_sql(
+        "SELECT users.name, users.pic, users.description
+         FROM users
+         INNER JOIN pets ON pets.user_id = users.id
+         INNER JOIN connections ON connections.pet_id = pets.id
+         WHERE pets.user_id = #{id}
+         "
+      )
+    elsif role == 'adopter'
+
+    end
+  end
 end
