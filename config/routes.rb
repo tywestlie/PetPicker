@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       namespace :users do
         post '/:id/pets', to: 'pets#create'
         get '/:id/pets', to: 'pets#index'
+        get '/:id/matches', to: 'matches#index'
       end
     end
   end
