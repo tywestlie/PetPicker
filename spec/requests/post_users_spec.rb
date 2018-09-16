@@ -16,7 +16,7 @@ describe "post a user" do
   end
 
   it 'adds user with all parameter' do
-    post "/api/v1/users", params: {user: {name: "banana", password: "1234", role: "adopter", species_to_adopt: "dog", lat: 30.5, lng: 33.44, search_radius: 4}}
+    post "/api/v1/users", params: {user: {name: "banana", password: "1234", role: "adopter", species_to_adopt: "dog", lat: 30.5, lng: 33.44, search_radius: 4, pic: "www.somepic.com", description: "I like puppies"}}
 
     expect(response).to be_successful
     user = User.all.first
