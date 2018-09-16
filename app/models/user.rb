@@ -21,14 +21,20 @@ class User < ApplicationRecord
       User.find_by_sql(
         "SELECT users.id, users.name, users.pic, users.description
          FROM users
-         INNER JOIN connections ON connections.adopter_id = users.id
-         INNER JOIN pets ON connections.pet_id = pets.id
-         WHERE pets.user_id = #{id}
+         LEFT OUTER JOIN connections ON connections.adopter_id = users.id
+         LEFT OUTER JOIN pets ON connections.pet_id = pets.id
+         WHERE pets.user_id = #{id} AND connections.status != 0
          GROUP BY users.id
          "
       )
     elsif role == 'adopter'
-
+      Pet.find_by_sql(
+        "SELECT pets.id, pets.name, pets.pic, pets.description
+         FROM pets
+         INNER JOIN connections ON connections.pet_id = pets.id
+         WHERE connections.adopter_id = #{id} AND connections.status = 2
+         GROUP BY pets.id "
+      )
     end
   end
 end
