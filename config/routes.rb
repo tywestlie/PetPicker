@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get '/:id/pets', to: 'pets#index'
         get '/:id/matches', to: 'matches#index'
         post '/:id/connections', to: 'connections#create'
+        delete '/:id/connections', to: 'connections#destroy'
       end
     end
   end
