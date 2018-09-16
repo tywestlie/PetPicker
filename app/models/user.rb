@@ -19,11 +19,12 @@ class User < ApplicationRecord
   def get_matches
     if role == 'owner'
       User.find_by_sql(
-        "SELECT users.name, users.pic, users.description
+        "SELECT users.id, users.name, users.pic, users.description
          FROM users
-         INNER JOIN pets ON pets.user_id = users.id
-         INNER JOIN connections ON connections.pet_id = pets.id
+         INNER JOIN connections ON connections.adopter_id = users.id
+         INNER JOIN pets ON connections.pet_id = pets.id
          WHERE pets.user_id = #{id}
+         GROUP BY users.id
          "
       )
     elsif role == 'adopter'
