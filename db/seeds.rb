@@ -15,9 +15,9 @@ ActiveRecord::Base.connection.reset_pk_sequence!('pets')
 ActiveRecord::Base.connection.reset_pk_sequence!('connections')
 ActiveRecord::Base.connection.reset_pk_sequence!('messages')
 
-user1 = User.create(name: 'Steven Tyler', species_to_adopt: 1, search_radius: 5, lat: 33.3, lng: 44.4, role: 3, password: 'admin')
+user1 = User.create(name: 'admin', species_to_adopt: 1, search_radius: 5, lat: 33.3, lng: 44.4, role: 3, password: 'admin')
 user2 = User.create(name: 'Theresa', species_to_adopt: 0, search_radius: 5, lat: 33.3, lng: 44.4, role: 2, password: '123')
-user3 = User.create(name: 'Tyler Steven', species_to_adopt: 2, search_radius: 5, lat: 33.3, lng: 44.4, role: 1, password: '123')
+user3 = User.create(name: 'Steven Tyler', species_to_adopt: 2, search_radius: 5, lat: 33.3, lng: 44.4, role: 1, password: '123')
 user4 = User.create(name: 'Puppy-boi', species_to_adopt: 1, search_radius: 5, lat: 33.3, lng: 44.4, role: 0, password: '123')
 
 pet1 = Pet.create(name: "Wanda", pic: "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/All-about-puppies--Cesar%E2%80%99s-tips%2C-tricks-and-advice.jpg?itok=bi9xUvwe", species: "dog", user: user4)
