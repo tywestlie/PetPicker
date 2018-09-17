@@ -10,12 +10,7 @@ class Api::V1::Users::PetsController < ApplicationController
        GROUP BY pets.id
        LIMIT 10"
      )
-
-     if pets.empty?
-       render json: {"message": "No pets left"}
-     else
-       render json: pets
-     end
+    render json: pets
    end
 
   def create
