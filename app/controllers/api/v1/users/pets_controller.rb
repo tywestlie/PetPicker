@@ -3,18 +3,14 @@ class Api::V1::Users::PetsController < ApplicationController
   def index
     user = User.find(params["id"])
     pets = Pet.find_by_sql(
-      "SELECT pets.*, connections.adopter_id
+      "SELECT pets.*
        FROM pets
        LEFT OUTER JOIN connections ON connections.pet_id = pets.id
        WHERE (connections.id is null OR connections.adopter_id != #{user.id}) AND (pets.user_id != #{user.id})
+       GROUP BY pets.id
        LIMIT 10"
      )
-
-     if pets.empty?
-       render json: {"message": "No pets left"}, status: 422
-     else
-       render json: pets
-     end
+    render json: pets
    end
 
   def create
