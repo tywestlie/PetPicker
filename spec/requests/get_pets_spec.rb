@@ -52,6 +52,7 @@ describe 'get pets' do
       expect(pet["name"]).to_not eq(pet3.name)
     end
   end
+  
   it 'returns a 422 if empty' do
     user = create(:user)
     user2 = create(:user)
