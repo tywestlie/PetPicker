@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_09_15_235854) do
     t.datetime "updated_at", null: false
     t.integer "adopter_id"
     t.bigint "pet_id"
-    t.index ["adopter_id"], name: "index_connections_on_adopter_id"
     t.index ["pet_id"], name: "index_connections_on_pet_id"
   end
 
