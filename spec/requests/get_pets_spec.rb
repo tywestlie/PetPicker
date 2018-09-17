@@ -52,13 +52,4 @@ describe 'get pets' do
       expect(pet["name"]).to_not eq(pet3.name)
     end
   end
-  
-  it 'returns a 422 if empty' do
-    user = create(:user)
-    user2 = create(:user)
-
-    get "/api/v1/users/#{user.id}/pets"
-
-    expect(response.status).to be(422)
-  end
 end
