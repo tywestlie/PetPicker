@@ -8,9 +8,14 @@ class Api::V1::Users::PetsController < ApplicationController
        LEFT OUTER JOIN connections ON connections.pet_id = pets.id
        WHERE (connections.id is null OR connections.adopter_id != #{user.id}) AND (pets.user_id != #{user.id})
        LIMIT 10"
-    )
-    render json: pets
-  end
+     )
+
+     if pets.empty?
+       render json: {"message": "No pets left"}, status: 422
+     else
+       render json: pets
+     end
+   end
 
   def create
     user = User.find(params["id"])
