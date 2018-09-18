@@ -40,7 +40,6 @@ describe '/api/v1/users/:id/matches' do
 
     expect(body).to be_a(Array)
     expect(body.length).to eq(5)
-    binding.pry
     # body.each do |user|
     #   expect(user["name"]).to_not eq(user2.name)
     #   expect(user["name"]).to_not eq(user5.name)
