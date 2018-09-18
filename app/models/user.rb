@@ -35,7 +35,7 @@ class User < ApplicationRecord
         if connection.pic == nil
           connection.pic = "https://upload.wikimedia.org/wikipedia/commons/d/d5/Placeholder_female_superhero_c.png"
         end
-        {id: connection.id, name: "#{connection.user_name} likes #{connection.pet_name}", pic: connection.pic, description: connection.description}
+        {id: connection.id, name: "#{connection.user_name} likes #{connection.pet_name}", pic: connection.pic, description: connection.description, owner: true}
       end
     elsif role == 'adopter'
       Pet.find_by_sql(
