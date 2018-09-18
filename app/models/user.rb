@@ -20,24 +20,30 @@ class User < ApplicationRecord
     if role == 'owner'
       results = Connection.find_by_sql(
         "SELECT connections.id, pets.name AS pet_name, users.name AS user_name, users.pic, users.description
-         FROM users
-         LEFT OUTER JOIN connections ON connections.adopter_id = users.id
-         LEFT OUTER JOIN pets ON connections.pet_id = pets.id
-         WHERE pets.user_id = #{id} AND connections.status != 0
-         GROUP BY connections.id, pets.id, users.id
-         "
+        FROM users
+        LEFT OUTER JOIN connections ON connections.adopter_id = users.id
+        LEFT OUTER JOIN pets ON connections.pet_id = pets.id
+        WHERE pets.user_id = #{id} AND connections.status != 0
+        GROUP BY connections.id, pets.id, users.id
+        "
       )
-      # binding.pry
+
       results.map do |connection|
+        if connection.description == nil
+          connection.description = "..."
+        end
+        if connection.pic == nil
+          connection.pic = "https://upload.wikimedia.org/wikipedia/commons/d/d5/Placeholder_female_superhero_c.png"
+        end
         {id: connection.id, name: "#{connection.user_name} likes #{connection.pet_name}", pic: connection.pic, description: connection.description}
       end
     elsif role == 'adopter'
       Pet.find_by_sql(
         "SELECT pets.id, pets.name, pets.pic, pets.description
-         FROM pets
-         INNER JOIN connections ON connections.pet_id = pets.id
-         WHERE connections.adopter_id = #{id} AND connections.status = 2
-         GROUP BY pets.id "
+        FROM pets
+        INNER JOIN connections ON connections.pet_id = pets.id
+        WHERE connections.adopter_id = #{id} AND connections.status = 2
+        GROUP BY pets.id "
       )
     end
   end
