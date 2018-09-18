@@ -9,5 +9,6 @@ class Api::V1::Users::MatchesController < ApplicationController
     conn = Connection.find(params[:match_id])
     conn.status = 'match'
     conn.save
+    render json: {message: "You've created a match!"}
   end
 end

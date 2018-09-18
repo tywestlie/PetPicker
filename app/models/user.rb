@@ -27,7 +27,6 @@ class User < ApplicationRecord
         GROUP BY connections.id, pets.id, users.id
         "
       )
-
       results.map do |connection|
         if connection.description == nil
           connection.description = "..."
