@@ -13,6 +13,7 @@ describe '/api/v1/users/:id/matches/:id' do
     post "/api/v1/users/#{owner.id}/matches/#{conn1.id}"
 
     expect(response).to be_successful
+    body = JSON.parse(response.body)
 
     expect(Connection.last.status).to eq('match')
   end
