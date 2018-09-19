@@ -1,6 +1,7 @@
 # PetPicker: Rails API
+[![CircleCI](https://circleci.com/gh/tywestlie/PetPicker/tree/master.svg?style=svg)](https://circleci.com/gh/tywestlie/PetPicker/tree/master)
 
-The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed [here](https://pet-picker.herokuapp.com/). The API endpoints are deployed [here](https://pet-picker-api.herokuapp.com/). 
+The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed [here](https://pet-picker.herokuapp.com/). The API endpoints are deployed [here](https://pet-picker-api.herokuapp.com/).
 
 ## Local Set Up
 
@@ -30,7 +31,7 @@ rspec
 ## Endpoints
 If you would like to consume our data these are the following endpoints that are available:
 
-All endpoints begin with: 
+All endpoints begin with:
 ```ruby
 https://pet-picker-api.herokuapp.com/api/v1/
 ```
