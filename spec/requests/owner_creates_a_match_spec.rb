@@ -14,6 +14,7 @@ describe '/api/v1/users/:id/matches/:id' do
 
     expect(response).to be_successful
     body = JSON.parse(response.body)
+    require 'pry'; binding.pry
 
     expect(Connection.last.status).to eq('match')
   end
