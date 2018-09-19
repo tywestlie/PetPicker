@@ -1,5 +1,4 @@
-# PetPicker: Rails API
-[![CircleCI](https://circleci.com/gh/tywestlie/PetPicker/tree/master.svg?style=svg)](https://circleci.com/gh/tywestlie/PetPicker/tree/master)
+# PetPicker: Rails API [![CircleCI](https://circleci.com/gh/tywestlie/PetPicker/tree/master.svg?style=svg)](https://circleci.com/gh/tywestlie/PetPicker/tree/master)
 
 The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed [here](https://pet-picker.herokuapp.com/). The API endpoints are deployed [here](https://pet-picker-api.herokuapp.com/).
 
