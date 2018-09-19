@@ -3,12 +3,12 @@ version: 2
 jobs:
   build:
     docker:
-       - image: circleci/ruby:2.4.1-node-browsers
-         environment:
+      - image: circleci/ruby:2.4.1-node-browsers
+        environment:
           PGHOST: localhost
           PGUSER: root
       - image: circleci/postgres:9.6
-         environment:
+        environment:
           POSTGRES_USER: root
           POSTGRES_DB: PetPicker_test
           POSTGRES_PASSWORD: ""
