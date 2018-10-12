@@ -6,8 +6,6 @@ class Api::V1::Users::ConnectionsController < ApplicationController
     if connection.persisted?
       puts "Created connection #{connection.id} with status #{connection.status} for pet #{connection.pet.name} and user #{connection.adopter.name}"
       render json: {message: "You liked #{pet.name}"}
-    else
-      puts "DID NOT SAVE connection #{connection.id} with status #{connection.status} for pet #{connection.pet.name} and user #{connection.adopter.name}"
     end
   end
 
@@ -18,8 +16,6 @@ class Api::V1::Users::ConnectionsController < ApplicationController
     if connection.persisted?
       puts "Created connection #{connection.id} with status #{connection.status} for pet #{connection.pet.name} and user #{connection.adopter.name}"
       render json: {message: "You noped #{pet.name}"}
-    else
-      puts "DID NOT SAVE connection #{connection.id} with status #{connection.status} for pet #{connection.pet.name} and user #{connection.adopter.name}"
     end
   end
 end
