@@ -26,7 +26,8 @@ describe "post a user" do
     expect(user.species_to_adopt).to eq("dog")
     expect(user.lat).to eq(30.5)
     expect(user.lng).to eq(33.44)
-    expect(user.search_radius).to eq(4)
+    expect(user.pic).to eq("www.somepic.com")
+    expect(user.description).to eq("I like puppies")
   end
 
   it 'user cant become and admin' do
