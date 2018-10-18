@@ -1,32 +1,23 @@
 class Api::V1::UsersController < ApplicationController
   def create
     user = User.new(user_params)
-    if params["user"]["role"] == "owner"
-      user.role = "owner"
-    else
-      user.role = "adopter"
-    end
+    role = params["user"]["role"]
+    authenticate_role(user, role)
     user.save_with_key
     render json: {"key": user.key, "id": user.id, "name": user.name}
   end
 
   def index
     user = User.find_by_name(params[:name])
-    if user && user.authenticate(params[:password])
-      render json: user
-    else
-      render json: { "message": "login failed" }, status: 404
-    end
+    pass = params[:password]
+    authenticate_user(user, pass)
   end
 
   def update
     user = User.find(params[:id])
+    role = params["user"]["role"]
     user.update(user_params)
-    if params["user"]["role"] == "owner"
-      user.role = "owner"
-    else
-      user.role = "adopter"
-    end
+    authenticate_role(user, role)
     user.save
     render json: user
   end
