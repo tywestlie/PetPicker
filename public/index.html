@@ -1,16 +1,128 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="index.css">
-    <title>Pet Picker API</title>
-  </head>
-  <body>
-    <h1>Welcome to PetPicker API</h1>
-    <hr>
-    <p>
-The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed <a href="">here</a>. The app is designed to create connections between pet owners and pet adopters, by allowing adopters to 'like' or 'nope' a series of pets.
-   </p>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="main_style.css">
+  <title>Pet Picker API</title>
+</head>
+<body>
+  <h2 class="center">PetPicker API</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="active" href="#overview">Overview</a></li>
+          <li class="tab col s3"><a href="#local-setup"> Local Setup</a></li>
+          <li class="tab col s3"><a href="#endpoints">Endpoints</a></li>
+          <li class="tab col s3"><a href="#authors">Authors</a></li>
+        </ul>
+      </div>
+      <div id="overview" class="col s12">
+        <p>The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed <a href="https://pet-picker.herokuapp.com/">here</a> and a <a href="https://github.com/apoc64/PetPicker">swift application</a> swift application. The app is designed to create connections between pet owners and pet adopters, by allowing adopters to 'like' or 'nope' a series of pets.</p>
+      </div>
+      <div id="local-setup" class="col s12">
+        <p>
+          If you'd like to contribute or run our test suite, run through the following commands:
+        </p>
+        Clone this application:
+        <pre>
+          git clone
+          cd PetPicker
+        </pre>
+        Run Bundle to install the gemfile:
+        <pre>
+          bundle install
+          bundle update
+        </pre>
+        Create and seed the database:
+        <pre>
+          rake db:create
+          rake db:migrate
+          rake db:seed
+        </pre>
+        Run the test suite:
+        <pre>
+          rspec
+        </pre>
+      </div>
+      <div id="endpoints" class="col s12">
+        <p>
+          If you would like to consume our data these are the following endpoints that are available:
+        </p>
+        <p>
+            All endpoints begin with:
+        </p>
+        <pre>
+          https://pet-picker-api.herokuapp.com/api/v1/
+        </pre>
+        <hr>
+        <pre>POST /users</pre>
+        <p>
+          Creates a user with params:
+        </p>
+        <code>
+          {user: {name: "bob", password: "1234", description: "I like puppies", pic: "http://www.site.com/mypic.png", role:adopter}}
+        </code>
+        <p>
+          Role is an enum including owner and adopter. Anything other than owner will create an adopter
+        </p>
+        <hr>
+        <pre>PATCH /users/:id </pre>
 
-  </body>
+        <p>Updates a user with the same params</p>
+        <hr>
+
+        <pre>GET /users</pre> - Logs in a user by checking a password against a secure hashed database with params:
+
+        <pre>{name: "bob, password: "1234"}</pre>
+        <hr>
+        <pre>DELETE /users/:id</pre>
+
+        <p> Deletes the user.</p>
+
+        <hr>
+
+        <pre>POST /users/:id/pets</pre>
+
+        creates a pet with params:
+
+        <code>
+          {pet: {name: "fido", species:"dog", description: "I'm a puppy", pic: "http://www.site.com/puppypic.png"}}
+        </code>
+        <hr>
+        <pre>GET /users/:id/pets</pre>
+        <p>Gets up to 10 pets that the user has not seen before</p>
+        <hr>
+
+        <pre>GET /users/:id/matches</pre>
+        <p> Gets 'matches' - for an owner, this is the adopters that have likes their pets
+        for an adopter, this is the pets that they have liked and the owner has matched them for</p>
+        <hr>
+
+        <pre>POST /users/:user_id/matches/:match_id</pre>
+        <p>An adopter changes the connection with an adopter from a 'like' to a 'match'</p>
+        <hr>
+
+        <pre>POST /users/:id/connections</pre> - adopter like a pet with params:
+
+        <code>{pet_id: 1}</code>
+        <hr>
+
+        <pre>DELETE /users/:id/connections</pre> - adopter nopes a pet with same params.
+
+      </div>
+      <div id="authors" class="col s12">
+        <a href="https://github.com/tywestlie">Tyler Westlie</a>
+        <br>
+        <a href="https://github.com/apoc64">Steve Schwedt</a>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+var tabBar = document.querySelector('.tabs')
+M.Tabs.init(tabBar, {});
+</script>
 </html>
