@@ -20,98 +20,119 @@
         </ul>
       </div>
       <div id="overview" class="col s12">
-        <p>The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed <a href="https://pet-picker.herokuapp.com/">here</a> and a <a href="https://github.com/apoc64/PetPicker">swift application</a> swift application. The app is designed to create connections between pet owners and pet adopters, by allowing adopters to 'like' or 'nope' a series of pets.</p>
+        <div class="center image-holder">
+          <img class="responsive-img center" src="https://img.cutenesscdn.com/640/cme/cuteness_data/s3fs-public/diy_blog/Do-Dog-Siblings-Recognize-Each-Other.jpg" alt="puppies">
+        </div>
+        <p>The application is a RESTful Rails API that stores and serves user and pet information using JSON for a React front-end deployed <a href="https://pet-picker.herokuapp.com/">here</a> and a <a href="https://github.com/apoc64/PetPicker">Swift iOS app</a>. The app is designed to create connections between pet owners and pet adopters, by allowing adopters to 'like' or 'nope' a series of pets.</p>
       </div>
       <div id="local-setup" class="col s12">
         <p>
           If you'd like to contribute or run our test suite, run through the following commands:
         </p>
         Clone this application:
-        <pre>
-          git clone
-          cd PetPicker
-        </pre>
+        <div class="code-block">
+          <pre>git clone
+cd PetPicker</pre>
+        </div>
         Run Bundle to install the gemfile:
-        <pre>
-          bundle install
-          bundle update
-        </pre>
+        <div class="code-block">
+          <pre>bundle install
+bundle update</pre>
+        </div>
         Create and seed the database:
-        <pre>
-          rake db:create
-          rake db:migrate
-          rake db:seed
-        </pre>
+        <div class="code-block"><pre>rake db:create
+rake db:migrate
+rake db:seed</pre>
+        </div>
         Run the test suite:
-        <pre>
-          rspec
-        </pre>
+        <div class="code-block">
+          <pre>rspec
+          </pre>
+        </div>
       </div>
       <div id="endpoints" class="col s12">
         <p>
           If you would like to consume our data these are the following endpoints that are available:
         </p>
         <p>
-            All endpoints begin with:
+          All endpoints begin with:
         </p>
-        <pre>
-          https://pet-picker-api.herokuapp.com/api/v1/
-        </pre>
+        <pre>https://pet-picker-api.herokuapp.com/api/v1/</pre>
         <hr>
-        <pre>POST /users</pre>
+        <div class="code-block">
+          <pre>POST /users</pre>
+        </div>
         <p>
           Creates a user with params:
         </p>
-        <code>
-          {user: {name: "bob", password: "1234", description: "I like puppies", pic: "http://www.site.com/mypic.png", role:adopter}}
-        </code>
+        <div class="code-block">
+          <code>
+            {user: {name: "bob", password: "1234", description: "I like puppies", pic: "http://www.site.com/mypic.png", role:adopter}}
+          </code>
+        </div>
         <p>
           Role is an enum including owner and adopter. Anything other than owner will create an adopter
         </p>
         <hr>
-        <pre>PATCH /users/:id </pre>
-
+        <div class="code-block">
+          <pre>PATCH /users/:id </pre>
+        </div>
         <p>Updates a user with the same params</p>
         <hr>
-
-        <pre>GET /users</pre> - Logs in a user by checking a password against a secure hashed database with params:
-
-        <pre>{name: "bob, password: "1234"}</pre>
+        <div class="code-block">
+          <pre>GET /users</pre>
+        </div>
+        <p>Logs in a user by checking a password against a secure hashed database with params:</p>
+        <div class="code-block">
+          <pre>{name: "bob, password: "1234"}</pre>
+        </div>
         <hr>
-        <pre>DELETE /users/:id</pre>
-
+        <div class="code-block">
+          <pre>DELETE /users/:id</pre>
+        </div>
         <p> Deletes the user.</p>
-
         <hr>
-
-        <pre>POST /users/:id/pets</pre>
+        <div class="code-block">
+          <pre>POST /users/:id/pets</pre>
+        </div>
 
         creates a pet with params:
 
-        <code>
-          {pet: {name: "fido", species:"dog", description: "I'm a puppy", pic: "http://www.site.com/puppypic.png"}}
-        </code>
+        <div class="code-block">
+          <code>
+            {pet: {name: "fido", species:"dog", description: "I'm a puppy", pic: "http://www.site.com/puppypic.png"}}
+          </code>
+        </div>
         <hr>
-        <pre>GET /users/:id/pets</pre>
+        <div class="code-block">
+          <pre>GET /users/:id/pets</pre>
+        </div>
         <p>Gets up to 10 pets that the user has not seen before</p>
         <hr>
-
-        <pre>GET /users/:id/matches</pre>
+        <div class="code-block">
+          <pre>GET /users/:id/matches</pre>
+        </div>
         <p> Gets 'matches' - for an owner, this is the adopters that have likes their pets
         for an adopter, this is the pets that they have liked and the owner has matched them for</p>
         <hr>
 
-        <pre>POST /users/:user_id/matches/:match_id</pre>
+        <div class="code-block">
+          <pre>POST /users/:user_id/matches/:match_id</pre>
+        </div>
         <p>An adopter changes the connection with an adopter from a 'like' to a 'match'</p>
         <hr>
-
-        <pre>POST /users/:id/connections</pre> - adopter like a pet with params:
-
-        <code>{pet_id: 1}</code>
+        <div class="code-block">
+          <pre>POST /users/:id/connections</pre>
+        </div>
+        <p>adopter like a pet with params:</p>
+        <div class="code-block">
+          <code>{pet_id: 1}</code>
+        </div>
         <hr>
-
-        <pre>DELETE /users/:id/connections</pre> - adopter nopes a pet with same params.
-
+        <div class="code-block">
+          <pre>DELETE /users/:id/connections</pre>
+        </div>
+        <p>adopter nopes a pet with same params.</p>
       </div>
       <div id="authors" class="col s12">
         <a href="https://github.com/tywestlie">Tyler Westlie</a>
