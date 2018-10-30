@@ -1,4 +1,7 @@
 class Api::V1::UsersController < ApplicationController
+
+  before_action :validate_token, only: [:update]
+
   def create
     user = User.new(user_params)
     role = params['user']['role']
