@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         post '/:id/pets', to: 'pets#create'
         get '/:id/pets', to: 'pets#index'
         get '/:id/matches', to: 'matches#index'
-        post '/:user_id/matches/:match_id', to: 'matches#update'
+        post '/:id/matches/:match_id', to: 'matches#update'
         post '/:id/connections', to: 'connections#create'
         delete '/:id/connections', to: 'connections#destroy'
       end

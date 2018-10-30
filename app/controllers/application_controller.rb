@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  # before_action :authenticate_token
-
   def authenticate_user(user, pass)
     if user && user.authenticate(pass)
       render json: user
