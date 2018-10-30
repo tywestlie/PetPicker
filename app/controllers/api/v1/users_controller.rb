@@ -1,10 +1,13 @@
 class Api::V1::UsersController < ApplicationController
+
+  before_action :validate_token, only: [:update, :destroy]
+
   def create
     user = User.new(user_params)
-    role = params["user"]["role"]
+    role = params['user']['role']
     authenticate_role(user, role)
     user.save_with_key
-    render json: {"key": user.key, "id": user.id, "name": user.name}
+    render json: {'key': user.key, 'id': user.id, 'name': user.name}
   end
 
   def index
@@ -15,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    role = params["user"]["role"]
+    role = params['user']['role']
     user.update(user_params)
     authenticate_role(user, role)
     user.save

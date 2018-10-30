@@ -1,10 +1,18 @@
 require 'rails_helper'
 
 describe "update a user" do
-  it 'updates user with all parameters' do
+  it 'wont update without a valid token' do
     user = create(:user)
 
     patch "/api/v1/users/#{user.id}", params: {user: {name: "banana", password: "1234", role: "adopter", species_to_adopt: "cat", lat: 30.5, lng: 33.44, search_radius: 4}}
+
+    expect(response).to_not be_successful
+  end
+
+  it 'updates user with all parameters' do
+    user = create(:user)
+    token = JWT.encode user.id, Rails.application.secret_key_base, 'HS256'
+    patch "/api/v1/users/#{user.id}", params: {user: {name: "banana", password: "1234", role: "adopter", species_to_adopt: "cat", lat: 30.5, lng: 33.44, search_radius: 4}, token: token}
 
     expect(response).to be_successful
     user = User.all.first
@@ -19,8 +27,9 @@ describe "update a user" do
 
   it 'can make the user an owner' do
     user = create(:user)
+    token = JWT.encode user.id, Rails.application.secret_key_base, 'HS256'
     # Can fail on 2 word Simpson name
-    patch "/api/v1/users/#{user.id}", params: {user: {name: "banana", password: "1234", role: "owner", species_to_adopt: "dog", lat: 30.5, lng: 33.44, search_radius: 4}}
+    patch "/api/v1/users/#{user.id}", params: {user: {name: "banana", password: "1234", role: "owner", species_to_adopt: "dog", lat: 30.5, lng: 33.44, search_radius: 4}, token: token}
 
     expect(response).to be_successful
     user = User.all.first

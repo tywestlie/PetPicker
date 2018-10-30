@@ -1,4 +1,7 @@
 class Api::V1::Users::MatchesController < ApplicationController
+
+  before_action :validate_token
+
   def index
     user = User.find(params["id"])
     results = user.get_matches

@@ -1,4 +1,6 @@
 class Api::V1::Users::ConnectionsController < ApplicationController
+  before_action :validate_token
+
   def create
     pet = Pet.find(params[:pet_id])
     name = pet.name
