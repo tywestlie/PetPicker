@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user(user, pass)
     if user && user.authenticate(pass)
-      token = JWT.encode user.id, Rails.application.secret_key_base, 'HS256'
+      # token = JWT.encode user.id, Rails.application.secret_key_base, 'HS256'
       # user = token
       # user.instance_variable_set('token', token)
       render json: user
