@@ -1,18 +1,16 @@
 class Api::V1::Users::PetsController < ApplicationController
 
+  before_action :validate_token
+
   def index
-    # binding.pry
-    if authenticate_token(params['id'], params['token'])
-      pets = Pet.find_pets(params["id"])
-      render json: pets
-    else
-      render json: {message: 'invalid token'}, status: 400
-    end
+    pets = Pet.find_pets(params['id'])
+    render json: pets
   end
 
   def create
     user = User.find(params["id"])
     pet = user.pets.create(pet_params)
+    render json: {message: "Created #{pet.name}"}
   end
 
   private
