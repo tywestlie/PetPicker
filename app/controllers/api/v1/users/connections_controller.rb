@@ -1,5 +1,5 @@
 class Api::V1::Users::ConnectionsController < ApplicationController
-  before_action :validate_token, only: [:create]
+  before_action :validate_token
 
   def create
     pet = Pet.find(params[:pet_id])
