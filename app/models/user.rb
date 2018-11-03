@@ -15,7 +15,7 @@ class User < ApplicationRecord
     save
   end
 
-  def get_matches
+  def matches
     if role == 'owner'
       results = owner_connections
       format_connection_fields(results)
@@ -24,6 +24,8 @@ class User < ApplicationRecord
     end
   end
 
+  private
+
   def owner_connections
     Connection.find_by_sql(
       "SELECT connections.id, pets.name AS pet_name, users.name AS user_name, users.pic, users.description
@@ -31,20 +33,15 @@ class User < ApplicationRecord
       LEFT OUTER JOIN connections ON connections.adopter_id = users.id
       LEFT OUTER JOIN pets ON connections.pet_id = pets.id
       WHERE pets.user_id = #{id} AND connections.status != 0
-      GROUP BY connections.id, pets.id, users.id
-      "
+      GROUP BY connections.id, pets.id, users.id"
     )
   end
 
-  def format_connection_fields(results)
-    results.map do |connection|
-      if connection.description.nil?
-        connection.description = "..."
-      end
-      if connection.pic.nil?
-        connection.pic = 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Placeholder_female_superhero_c.png'
-      end
-      {id: connection.id, name: "#{connection.user_name} likes #{connection.pet_name}", pic: connection.pic, description: connection.description, owner: true}
+  def format_connection_fields(connections)
+    connections.map do |conn|
+      conn.description = "..." if conn.description.nil?
+      conn.pic = placeholder_image if conn.pic.nil?
+      {id: conn.id, name: "#{conn.user_name} likes #{conn.pet_name}", pic: conn.pic, description: conn.description, owner: true}
     end
   end
 
@@ -54,7 +51,11 @@ class User < ApplicationRecord
       FROM pets
       INNER JOIN connections ON connections.pet_id = pets.id
       WHERE connections.adopter_id = #{id} AND connections.status = 2
-      GROUP BY pets.id "
+      GROUP BY pets.id"
     )
+  end
+
+  def placeholder_image
+    'https://upload.wikimedia.org/wikipedia/commons/d/d5/Placeholder_female_superhero_c.png'
   end
 end
