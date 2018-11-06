@@ -15,6 +15,12 @@ class User < ApplicationRecord
     save
   end
 
+  def update_role(new_role)
+    new_role = 'adopter' unless new_role == 'owner'
+    self.role = new_role
+    save
+  end
+
   def matches
     if role == 'owner'
       results = owner_connections
@@ -39,7 +45,7 @@ class User < ApplicationRecord
 
   def format_connection_fields(connections)
     connections.map do |conn|
-      conn.description = "..." if conn.description.nil?
+      conn.description = '...' if conn.description.nil?
       conn.pic = placeholder_image if conn.pic.nil?
       {id: conn.id, name: "#{conn.user_name} likes #{conn.pet_name}", pic: conn.pic, description: conn.description, owner: true}
     end

@@ -3,20 +3,6 @@ class ApplicationController < ActionController::API
 
   private
 
-  def authenticate_user(user, pass)
-    return render json: user if authenticate(user, pass)
-    login_failure
-  end
-
-  def authenticate(user, pass)
-    !user.nil? && user.authenticate(pass)
-  end
-
-  def authenticate_role(user, role)
-    return user.role = 'owner' if role == 'owner'
-    user.role = 'adopter'
-  end
-
   def validate_token
     return invalid_token unless authenticate_token
   end
