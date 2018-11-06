@@ -8,9 +8,9 @@ class Api::V1::Users::PetsController < ApplicationController
   end
 
   def create
-    user = User.find(params["id"])
+    user = User.find(params['id'])
     pet = user.pets.create(pet_params)
-    render json: {message: "Created #{pet.name}"}
+    render json: { message: "Created #{pet.name}" }
   end
 
   private
